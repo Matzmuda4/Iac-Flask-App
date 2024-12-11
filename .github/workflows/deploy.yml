@@ -29,3 +29,5 @@ jobs:
             --resource-group BCSAI2024-DEVOPS-STUDENTS-B-DEV \
             --template-file main.bicep \
             --parameters @parameters.json
+
+            
