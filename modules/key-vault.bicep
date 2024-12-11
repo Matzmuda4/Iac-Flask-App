@@ -11,7 +11,7 @@ param enableVaultForDeployment bool = true
 param roleAssignments array = [
   {
     principalId: 'c52bb0cc-7f22-4c28-aee8-264d1cafbb06'
-    roleDefinitionIdOrName: 'Key Vault Secrets User'
+    roleDefinitionIdOrName: '4633458b-17de-408a-b874-0445c86b69e6'
     principalType: 'ServicePrincipal'
   }
 ]
@@ -37,7 +37,7 @@ resource roleAssignment 'Microsoft.Authorization/roleAssignments@2022-04-01' = [
   scope: keyVault
   properties: {
     principalId: assignment.principalId
-    roleDefinitionId: resourceId('Microsoft.Authorization/roleDefinitions', assignment.roleDefinitionIdOrName)
+    roleDefinitionId: subscriptionResourceId('Microsoft.Authorization/roleDefinitions', assignment.roleDefinitionIdOrName)
     principalType: assignment.principalType
   }
 }]
