@@ -1,8 +1,24 @@
 {
-  "containerRegistryName": "mat-containerregistry",
-  "containerRegistryImageName": "mat-image",
-  "containerRegistryImageVersion": "v1",
-  "appServicePlanName": "mat-appserviceplan",
-  "webAppName": "mat-webapp",
-  "location": "westeurope"
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentParameters.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "containerRegistryName": {
+      "value": "mat-containerregistry"
+    },
+    "containerRegistryImageName": {
+      "value": "mat-image"
+    },
+    "containerRegistryImageVersion": {
+      "value": "v1"
+    },
+    "appServicePlanName": {
+      "value": "mat-appserviceplan"
+    },
+    "webAppName": {
+      "value": "mat-webapp"
+    },
+    "location": {
+      "value": "westeurope"
+    }
+  }
 }
