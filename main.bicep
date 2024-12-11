@@ -6,14 +6,6 @@ param webAppName string
 param location string
 param keyVaultName string
 
-// Add these new parameters
-@secure()
-param adminCredentialsKeyVaultSecretUserName string = 'acrUsername'
-@secure()
-param adminCredentialsKeyVaultSecretUserPassword1 string = 'acrPassword1'
-@secure()
-param adminCredentialsKeyVaultSecretUserPassword2 string = 'acrPassword2'
-
 // Deploy Key Vault
 module keyVault 'modules/key-vault.bicep' = {
   name: 'deployKeyVault'
@@ -39,9 +31,9 @@ module acr 'modules/containerRegistry.bicep' = {
     location: location
     acrAdminUserEnabled: true
     adminCredentialsKeyVaultResourceId: keyVault.outputs.keyVaultId
-    adminCredentialsKeyVaultSecretUserName: adminCredentialsKeyVaultSecretUserName
-    adminCredentialsKeyVaultSecretUserPassword1: adminCredentialsKeyVaultSecretUserPassword1
-    adminCredentialsKeyVaultSecretUserPassword2: adminCredentialsKeyVaultSecretUserPassword2
+    adminCredentialsKeyVaultSecretUserName: 'acrUsername'
+    adminCredentialsKeyVaultSecretUserPassword1: 'acrPassword1'
+    adminCredentialsKeyVaultSecretUserPassword2: 'acrPassword2'
   }
 }
 
@@ -67,11 +59,11 @@ module webApp 'modules/webApp.bicep' = {
   params: {
     name: webAppName
     location: location
-    kind: 'app'
+    kind: 'app,linux,container'
     serverFarmResourceId: appServicePlan.outputs.id
     dockerRegistryServerUrl: '@Microsoft.KeyVault(SecretUri=${keyVault.outputs.keyVaultUri}secrets/acrLoginServer)'
     dockerRegistryServerUserName: '@Microsoft.KeyVault(SecretUri=${keyVault.outputs.keyVaultUri}secrets/acrUsername)'
-    dockerRegistryServerPassword: '@Microsoft.KeyVault(SecretUri=${keyVault.outputs.keyVaultUri}secrets/acrPassword)'
+    dockerRegistryServerPassword: '@Microsoft.KeyVault(SecretUri=${keyVault.outputs.keyVaultUri}secrets/acrPassword1)'
     siteConfig: {
       linuxFxVersion: 'DOCKER|${containerRegistryName}.azurecr.io/${containerRegistryImageName}:${containerRegistryImageVersion}'
       appCommandLine: ''
