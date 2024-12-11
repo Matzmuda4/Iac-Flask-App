@@ -32,7 +32,6 @@ module appServicePlan 'modules/servicePlan.bicep' = {
   }
 }
 
-// Deploy Azure Web App
 module webApp 'modules/webApp.bicep' = {
   name: 'deployWebApp'
   params: {
@@ -46,8 +45,8 @@ module webApp 'modules/webApp.bicep' = {
       appSettingsKeyValuePairs: {
         WEBSITES_ENABLE_APP_SERVICE_STORAGE: false
         DOCKER_REGISTRY_SERVER_URL: acr.outputs.loginServer
-        DOCKER_REGISTRY_SERVER_USERNAME: '<MatZmuda>'
-        DOCKER_REGISTRY_SERVER_PASSWORD: '<MatZmuda>'  
+        DOCKER_REGISTRY_SERVER_USERNAME: acr.outputs.adminUsername
+        DOCKER_REGISTRY_SERVER_PASSWORD: acr.outputs.adminPassword
       }
     }
   }
