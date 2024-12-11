@@ -3,7 +3,7 @@
   "contentVersion": "1.0.0.0",
   "parameters": {
     "containerRegistryName": {
-      "value": "mat-containerregistry"
+      "value": "matacr"
     },
     "containerRegistryImageName": {
       "value": "mat-image"
