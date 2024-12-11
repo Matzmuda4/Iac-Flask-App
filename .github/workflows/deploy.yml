@@ -25,7 +25,7 @@ jobs:
           az deployment group create \
             --resource-group BCSAI2024-DEVOPS-STUDENTS-B-DEV \
             --template-file modules/key-vault.bicep \
-            --parameters keyVaultName=${{ vars.KEY_VAULT_NAME }}
+            --parameters name=${{ vars.KEY_VAULT_NAME }} location=westeurope
 
     - name: Deploy Main Infrastructure
       uses: azure/CLI@v1
@@ -34,7 +34,7 @@ jobs:
           az deployment group create \
             --resource-group BCSAI2024-DEVOPS-STUDENTS-B-DEV \
             --template-file main.bicep \
-            --parameters @parameters.json
+            --parameters @parameters.json keyVaultName=${{ vars.KEY_VAULT_NAME }}
 
     - name: Get ACR credentials from Key Vault
       uses: azure/CLI@v1
