@@ -45,9 +45,9 @@ module webApp 'modules/webApp.bicep' = {
       appCommandLine: ''
       appSettingsKeyValuePairs: {
         WEBSITES_ENABLE_APP_SERVICE_STORAGE: false
-        DOCKER_REGISTRY_SERVER_URL: 'https://${containerRegistryName}.azurecr.io'
-        DOCKER_REGISTRY_SERVER_USERNAME: acr.outputs.adminUsername
-        DOCKER_REGISTRY_SERVER_PASSWORD: acr.outputs.adminPassword
+        DOCKER_REGISTRY_SERVER_URL: acr.outputs.loginServer
+        DOCKER_REGISTRY_SERVER_USERNAME: '<MatZmuda>'
+        DOCKER_REGISTRY_SERVER_PASSWORD: '<MatZmuda>'  
       }
     }
   }
