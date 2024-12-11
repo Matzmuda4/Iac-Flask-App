@@ -1,9 +1,8 @@
 {
-    "containerRegistryName": "Mat-ContainerRegistry",
-    "containerRegistryImageName": "Mat-Image",
-    "containerRegistryImageVersion": "v1",
-    "appServicePlanName": "Mat-AppServicePlan",
-    "webAppName": "Mat-WebApp",
-    "location": "westeurope"
-  }
-  
+  "containerRegistryName": "mat-containerregistry",
+  "containerRegistryImageName": "mat-image",
+  "containerRegistryImageVersion": "v1",
+  "appServicePlanName": "mat-appserviceplan",
+  "webAppName": "mat-webapp",
+  "location": "westeurope"
+}
