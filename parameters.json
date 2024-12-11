@@ -19,6 +19,9 @@
     },
     "location": {
       "value": "westeurope"
+    },
+    "keyVaultName": {
+      "value": "mat-key-vault"
     }
   }
 }
